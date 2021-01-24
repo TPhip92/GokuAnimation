@@ -1,0 +1,2 @@
+# GokuAnimation
+Simple Sprite Animation
