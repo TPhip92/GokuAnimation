@@ -3,7 +3,7 @@ class Goku{
 
     constructor(game, x, y){
         Object.assign(this, {game, x, y});
-        this.game.Goku = this;
+        this.game.goku = this;
   
         this.width = 50;
         this.height = 60;
