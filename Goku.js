@@ -88,9 +88,9 @@ class Goku{
 
              //****** Blast Right & Left ******
          this.animations[this.STATE.BLAST][this.FACING.RIGHT]
-             = new Animator(this.spritesheet, 60, 820, this.width,this.height ,4,.15,10,false, true);
+             = new Animator(this.spritesheet, 60, 820, this.width,this.height ,4, 0.15,10,false, true);
          this.animations[this.STATE.BLAST][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 770,820, this.width,this.height ,4,0.15,10,true, true);
+             = new Animator(this.spritesheetreverse, 770,820, this.width,this.height ,4, 0.15,10,true, true);
 
              //****** Power-Up Right & Left ******
          this.animations[this.STATE.POWER][this.FACING.RIGHT]
