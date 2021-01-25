@@ -3,15 +3,15 @@ class Goku{
 
     constructor(game, x, y){
         Object.assign(this, {game, x, y});
-        this.game.goku = this;
+        this.game.Goku = this;
 
-        this.spritesheet = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheet.png");
-        this.spritesheetreverse = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheetReverse");
+        this.spritesheet = ASSET_MANAGER.getAsset("./sprites/GokuSpriteSheet.png");
+        this.spritesheetreverse = ASSET_MANAGER.getAsset("./sprites/GokuSpriteSheetReverse");
 
-        // this.spritesheet = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheet_trans.png");
-        // this.spritesheetreverse = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheetReverse_trans");
       
       
+        this.height = 32;
+        this.width = 24;
 
         this.STATE = {
             WALK: 0,
@@ -51,51 +51,51 @@ class Goku{
 
         //****** IDLE LEFT & RIGHT *********
         this.animations[this.STATE.IDLE][this.FACING.RIGHT]
-            = new Animator(this.spritesheet, 695,150, 50, 65,2, 0.5, 20,false, true);
+            = new Animator(this.spritesheet, 519,115, 38, 32,3, 0.25, 5,false, true);
         this.animations[this.STATE.IDLE][this.FACING.LEFT]
-            = new Animator(this.spritesheetreverse, 270,150, 50, 65 ,2, 0.5, 20, true, true);
+        = new Animator(this.spritesheet, 519,115, 38, 32,3, 0.25, 5,true, true);
     
         //******* WALK LEFT & RIGHT *********
         this.animations[this.STATE.WALK][this.FACING.RIGHT]
-            = new Animator(this.spritesheet, 60,320, this.width,this.height ,6,0.2,10,false, true);
+            = new Animator(this.spritesheet, 392,121, this.width, this.height ,2,0.15,0,false, true);
         this.animations[this.STATE.WALK][this.FACING.LEFT]
-            = new Animator(this.spritesheetreverse, 670,320, this.width,this.height ,6,0.2,10,true, true);
+        = new Animator(this.spritesheet, 392,121, this.width, this.height ,2,0.15,0,true, true);
     
          //******* Punch Right & LEFT ********
          this.animations[this.STATE.PUNCH][this.FACING.RIGHT] 
-             = new Animator(this.spritesheet, 60,555, this.width,this.height ,3,0.2,20,false, true);
+         = new Animator(this.spritesheet, 371,155, 22,27,2,0.25,4,false, true);
          this.animations[this.STATE.PUNCH][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 875,555, this.width,this.height ,3,0.2,20,true, true);
+             = new Animator(this.spritesheet, 371,155, 22,27,2,0.25,4,true, true);
     
          //******* Kick Right & Left *******
          this.animations[this.STATE.KICK][this.FACING.RIGHT]
-             = new Animator(this.spritesheet, 60,645, this.width,this.height ,4,0.08,10,false, true);
+             = new Animator(this.spritesheet, 561,158, 22,24 ,2,0.15,7,false, true);
          this.animations[this.STATE.KICK][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 835,645, this.width,this.height ,4,0.08,10,true, true);
+         = new Animator(this.spritesheet, 561,158, 22,24 ,2,0.15,7,true, true);
     
          //****** Duck Left & Right ******
          this.animations[this.STATE.DUCK][this.FACING.RIGHT]
-             = new Animator(this.spritesheet, 60,245, this.width,this.height ,3,0.15,20,false, true);
+             = new Animator(this.spritesheet, 585,200, 28,14 ,1,1,0,false, true);
          this.animations[this.STATE.DUCK][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 900,245, this.width,this.height ,3,0.15,20,true, true);
+         = new Animator(this.spritesheet, 585,200, 28,14 ,1,1,0,false, true);
     
          //****** Jump Right & Left ******
          this.animations[this.STATE.JUMP][this.FACING.RIGHT]
-             = new Animator(this.spritesheet, 60,405, this.width,this.height ,6,0.15,10,false, true);
+             = new Animator(this.spritesheet, 463,190, 18,25 ,1,1,0,false, true);
          this.animations[this.STATE.JUMP][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 765,405, this.width,this.height ,6,0.15,10,true, true);
+         = new Animator(this.spritesheet, 463,190, 18,25 ,1,1,0,false, true);
 
              //****** Blast Right & Left ******
          this.animations[this.STATE.BLAST][this.FACING.RIGHT]
-             = new Animator(this.spritesheet, 60, 820, this.width,this.height ,4, 0.15,10,false, true);
+             = new Animator(this.spritesheet, 468, 301, 22,27 ,3, 0.5,5,false, true);
          this.animations[this.STATE.BLAST][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 770,820, this.width,this.height ,4, 0.15,10,true, true);
+         = new Animator(this.spritesheet, 468, 301, 22,27 ,3, 0.5,5,false, true);
 
              //****** Power-Up Right & Left ******
          this.animations[this.STATE.POWER][this.FACING.RIGHT]
-             = new Animator(this.spritesheet, 60,895, this.width,this.height ,4,0.15,10,false, true);
+             = new Animator(this.spritesheet, 588,451, 18,32 ,2,0.25,10,false, true);
          this.animations[this.STATE.POWER][this.FACING.LEFT]
-             = new Animator(this.spritesheetreverse, 635,895, this.width,this.height ,4,0.15,10,true, true);
+         = new Animator(this.spritesheet, 588,451, 18,32 ,2,0.25,10,false, true);
              
        
     };
@@ -184,11 +184,9 @@ class Goku{
             ctx.strokeRect(this.x, this.y, this.width*2, this.height*2);
         };
         if(this.state === this.STATE.JUMP){
-            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y-8, 2);
-        } else if(this.state === this.STATE.FLIP){
-            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y-18, 2);
+            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y-8, 5);
         } else {
-            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y, 2);
+            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y, 5);
         }
      };
 };
