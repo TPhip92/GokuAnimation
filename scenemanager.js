@@ -11,10 +11,10 @@ class SceneManager{
     };
 
     loadLevel(){
-        // let ground = new Ground(this.game, 14 * PARAMS.BLOCKWIDTH, 69 * PARAMS.BLOCKWIDTH);
-        // this.game.addEntity(ground);
 
-        this.goku = new Goku(this.game, 0, 500);
+        this.bground = new background(this.game, 0, 0);
+        this.game.addEntity(this.bkground);
+        this.goku = new Goku(this.game, 250, 500);
         this.game.addEntity(this.goku);
     };
 
