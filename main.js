@@ -4,6 +4,8 @@ var ASSET_MANAGER = new AssetManager();
 
 ASSET_MANAGER.queueDownload("./sprites/Goku_SpriteSheet.png");
 ASSET_MANAGER.queueDownload("./sprites/Goku_SpriteSheetReverse.png");
+ASSET_MANAGER.queueDownload("./sprites/dbz_sprites_backgrounds.png");
+
 
 
 
