@@ -14,7 +14,10 @@ class Goku{
             PUNCH: 2,
             KICK: 3,
             DUCK:  4,
-            JUMP:  5
+            JUMP:  5,
+            POWER: 6,
+            BLAST: 7
+
         };
     
         this.FACING = {
@@ -84,15 +87,15 @@ class Goku{
              = new Animator(this.spritesheet, 765,405, this.width,this.height ,6,0.15,10,true, true);
 
              //****** Blast Right & Left ******
-         this.animations[this.STATE.JUMP][this.FACING.RIGHT]
+         this.animations[this.STATE.BLAST][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,820, this.width,this.height ,4,0.15,10,false, true);
-         this.animations[this.STATE.JUMP][this.FACING.LEFT]
+         this.animations[this.STATE.BLAST][this.FACING.LEFT]
              = new Animator(this.spritesheet, 770,820, this.width,this.height ,4,0.15,10,true, true);
 
              //****** Power-Up Right & Left ******
-         this.animations[this.STATE.JUMP][this.FACING.RIGHT]
+         this.animations[this.STATE.POWER][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,895, this.width,this.height ,4,0.15,10,false, true);
-         this.animations[this.STATE.JUMP][this.FACING.LEFT]
+         this.animations[this.STATE.POWER][this.FACING.LEFT]
              = new Animator(this.spritesheet, 635,895, this.width,this.height ,4,0.15,10,true, true);
     };
 
@@ -143,6 +146,26 @@ class Goku{
         } else if(this.game.C && this.facing === this.FACING.LEFT){
             this.facing = this.FACING.LEFT;
             this.state = this.STATE.PUNCH;
+            action = true;
+        }
+        //Blast
+        if(this.game.SPACE && this.facing === this.FACING.RIGHT){
+            this.facing = this.FACING.RIGHT;
+            this.state = this.STATE.BLAST;
+            action = true;
+        } else if(this.game.C && this.facing === this.FACING.LEFT){
+            this.facing = this.FACING.LEFT;
+            this.state = this.STATE.BLAST;
+            action = true;
+        }
+        //Power
+        if(this.game.E && this.facing === this.FACING.RIGHT){
+            this.facing = this.FACING.RIGHT;
+            this.state = this.STATE.POWER;
+            action = true;
+        } else if(this.game.C && this.facing === this.FACING.LEFT){
+            this.facing = this.FACING.LEFT;
+            this.state = this.STATE.POWER;
             action = true;
         }
         //If character is not performing an action, he will be idle.
