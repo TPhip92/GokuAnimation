@@ -60,43 +60,43 @@ class Goku{
         this.animations[this.STATE.WALK][this.FACING.RIGHT]
             = new Animator(this.spritesheet, 60,320, this.width,this.height ,6,0.2,10,false, true);
         this.animations[this.STATE.WALK][this.FACING.LEFT]
-            = new Animator(this.spritesheet, 670,320, this.width,this.height ,6,0.2,10,true, true);
+            = new Animator(this.spritesheetreverse, 670,320, this.width,this.height ,6,0.2,10,true, true);
     
          //******* Punch Right & LEFT ********
          this.animations[this.STATE.PUNCH][this.FACING.RIGHT] 
              = new Animator(this.spritesheet, 60,555, this.width,this.height ,3,0.2,20,false, true);
          this.animations[this.STATE.PUNCH][this.FACING.LEFT]
-             = new Animator(this.spritesheet, 875,555, this.width,this.height ,3,0.2,20,true, true);
+             = new Animator(this.spritesheetreverse, 875,555, this.width,this.height ,3,0.2,20,true, true);
     
          //******* Kick Right & Left *******
          this.animations[this.STATE.KICK][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,645, this.width,this.height ,4,0.08,10,false, true);
          this.animations[this.STATE.KICK][this.FACING.LEFT]
-             = new Animator(this.spritesheet, 835,645, this.width,this.height ,4,0.08,10,true, true);
+             = new Animator(this.spritesheetreverse, 835,645, this.width,this.height ,4,0.08,10,true, true);
     
          //****** Duck Left & Right ******
          this.animations[this.STATE.DUCK][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,245, this.width,this.height ,3,0.15,20,false, true);
          this.animations[this.STATE.DUCK][this.FACING.LEFT]
-             = new Animator(this.spritesheet, 900,245, this.width,this.height ,3,0.15,20,true, true);
+             = new Animator(this.spritesheetreverse, 900,245, this.width,this.height ,3,0.15,20,true, true);
     
          //****** Jump Right & Left ******
          this.animations[this.STATE.JUMP][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,405, this.width,this.height ,6,0.15,10,false, true);
          this.animations[this.STATE.JUMP][this.FACING.LEFT]
-             = new Animator(this.spritesheet, 765,405, this.width,this.height ,6,0.15,10,true, true);
+             = new Animator(this.spritesheetreverse, 765,405, this.width,this.height ,6,0.15,10,true, true);
 
              //****** Blast Right & Left ******
          this.animations[this.STATE.BLAST][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,820, this.width,this.height ,4,0.15,10,false, true);
          this.animations[this.STATE.BLAST][this.FACING.LEFT]
-             = new Animator(this.spritesheet, 770,820, this.width,this.height ,4,0.15,10,true, true);
+             = new Animator(this.spritesheetreverse, 770,820, this.width,this.height ,4,0.15,10,true, true);
 
              //****** Power-Up Right & Left ******
          this.animations[this.STATE.POWER][this.FACING.RIGHT]
              = new Animator(this.spritesheet, 60,895, this.width,this.height ,4,0.15,10,false, true);
          this.animations[this.STATE.POWER][this.FACING.LEFT]
-             = new Animator(this.spritesheet, 635,895, this.width,this.height ,4,0.15,10,true, true);
+             = new Animator(this.spritesheetreverse, 635,895, this.width,this.height ,4,0.15,10,true, true);
     };
 
     update(){
