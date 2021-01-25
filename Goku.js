@@ -4,9 +4,14 @@ class Goku{
     constructor(game, x, y){
         Object.assign(this, {game, x, y});
         this.game.goku = this;
-  
-        this.width = 50;
-        this.height = 60;
+
+        this.spritesheet = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheet.png");
+        this.spritesheetreverse = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheetReverse");
+
+        // this.spritesheet = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheet_trans.png");
+        // this.spritesheetreverse = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheetReverse_trans");
+      
+      
 
         this.STATE = {
             WALK: 0,
@@ -17,17 +22,12 @@ class Goku{
             JUMP:  5,
             POWER: 6,
             BLAST: 7
-
         };
     
         this.FACING = {
             RIGHT:  0,
             LEFT: 1
         };
-
-
-        this.spritesheet = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheet.png");
-        this.spritesheetreverse = ASSET_MANAGER.getAsset("./sprites/Goku_SpriteSheetReverse");
         
         this.facing = this.FACING.RIGHT;
         this.state = this.STATE.IDLE;
@@ -42,19 +42,18 @@ class Goku{
 
     loadAnimations(){
 
-        for(var i = 0; i < 6; i++){
+        for(var i = 0; i < 8; i++){
             this.animations.push([]);
             for(var j = 0; j < 2; j++){
                 this.animations[i].push([]);
             }
         }
 
-
         //****** IDLE LEFT & RIGHT *********
         this.animations[this.STATE.IDLE][this.FACING.RIGHT]
-            = new Animator(this.spritesheet, 590,160, this.width,this.height ,5, 0.2, 20,false, true);
+            = new Animator(this.spritesheet, 695,150, 50, 65,2, 0.5, 20,false, true);
         this.animations[this.STATE.IDLE][this.FACING.LEFT]
-            = new Animator(this.spritesheetreverse, 200,155, this.width,this.height ,5, 0.2, 20, true, true);
+            = new Animator(this.spritesheetreverse, 270,150, 50, 65 ,2, 0.5, 20, true, true);
     
         //******* WALK LEFT & RIGHT *********
         this.animations[this.STATE.WALK][this.FACING.RIGHT]
@@ -97,17 +96,21 @@ class Goku{
              = new Animator(this.spritesheet, 60,895, this.width,this.height ,4,0.15,10,false, true);
          this.animations[this.STATE.POWER][this.FACING.LEFT]
              = new Animator(this.spritesheetreverse, 635,895, this.width,this.height ,4,0.15,10,true, true);
+             
+       
     };
+
 
     update(){
 
         let action = false;
         
+        //Jump
         if(this.game.W){
             this.state = this.STATE.JUMP;
-            this.game.y -= 10;
             action = true;
         } 
+        //Duck
         if (this.game.S){
             this.state = this.STATE.DUCK;
             action = true;
@@ -125,13 +128,13 @@ class Goku{
             action = true;
         }
         //Kick
-        if(this.game.A && (this.facing === this.FACING.RIGHT)){
+        if(this.game.P && (this.facing === this.FACING.RIGHT)){
             this.facing = this.FACING.RIGHT;
             this.state = this.STATE.KICK;
             this.y -= 3;
             this.y += 3;
             action = true;
-        } else if (this.game.A && (this.facing === this.FACING.LEFT)){
+        } else if (this.game.P && (this.facing === this.FACING.LEFT)){
             this.facing = this.FACING.LEFT;
             this.state = this.STATE.KICK;
             this.y -= 3;
@@ -153,7 +156,7 @@ class Goku{
             this.facing = this.FACING.RIGHT;
             this.state = this.STATE.BLAST;
             action = true;
-        } else if(this.game.C && this.facing === this.FACING.LEFT){
+        } else if(this.game.SPACE && this.facing === this.FACING.LEFT){
             this.facing = this.FACING.LEFT;
             this.state = this.STATE.BLAST;
             action = true;
@@ -163,21 +166,29 @@ class Goku{
             this.facing = this.FACING.RIGHT;
             this.state = this.STATE.POWER;
             action = true;
-        } else if(this.game.C && this.facing === this.FACING.LEFT){
+        } else if(this.game.E && this.facing === this.FACING.LEFT){
             this.facing = this.FACING.LEFT;
             this.state = this.STATE.POWER;
             action = true;
         }
         //If character is not performing an action, he will be idle.
         if(!action? this.state = this.STATE.IDLE: action =false);
+
     };
 
 
     draw(ctx){
+
         if(PARAMS.DEBUG){
             ctx.strokeStyle = "Red";
             ctx.strokeRect(this.x, this.y, this.width*2, this.height*2);
         };
-        this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y, 2);
-    };
+        if(this.state === this.STATE.JUMP){
+            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y-8, 2);
+        } else if(this.state === this.STATE.FLIP){
+            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y-18, 2);
+        } else {
+            this.animations[this.state][this.facing].drawFrame(this.game.clockTick,ctx, this.x, this.y, 2);
+        }
+     };
 };

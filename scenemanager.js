@@ -13,7 +13,7 @@ class SceneManager{
     loadLevel(){
 
         this.bground = new background(this.game, 0, 0);
-        this.game.addEntity(this.bkground);
+        this.game.addEntity(this.bground);
         this.goku = new Goku(this.game, 0, 500);
         this.game.addEntity(this.goku);
     };
