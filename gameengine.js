@@ -16,8 +16,9 @@ class GameEngine {
         this.S = false;
         this.D = false;
 
-        this.A = false;
-        this.B = false;
+        this.P = false;
+        this.C = false;
+        this.E = false;
         this.SPACE = false;
     };
 
@@ -58,13 +59,16 @@ class GameEngine {
                     that.S = true;
                     break;
                 case "Comma":
-                    that.A = true;
+                    that.C = true;
                     break;
                 case "Period":
-                    that.B = true;
+                    that.P = true;
                     break;
                 case "Space":
                     that.SPACE = true;
+                    break;
+                case "KeyE":
+                    that.E = true;
                     break;
             }
         }, false);
@@ -92,6 +96,12 @@ class GameEngine {
                     break;
                 case "Period":
                     that.P = false;
+                    break;
+                case "Space":
+                    that.SPACE = false;
+                    break;
+                case "KeyE":
+                    that.E = false;
                     break;
             }
         }, false);
